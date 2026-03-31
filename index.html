@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="shortcut icon" href="favicon.ico">
-<title>The Community Net - အမြန်နှုန်းစစ်ဆေးခြင်း</title>
+<title>ComNet Internet</title>
 <script type="text/javascript" src="speedtest.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+Myanmar:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -179,7 +179,7 @@ function startStop(){
 	}else{
 		I("startStopBtn").className="bg-red-500 text-white font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer";
 		I("startStopBtn").querySelector(".btnLabel").textContent="ABORT";
-		I("startStopBtn").querySelector(".btnLabelMm").textContent="ရပ်ရန်";
+		I("startStopBtn").querySelector(".btnLabelMm").textContent=" ရပ်မယ် ";
 		I("shareArea").style.display="none";
 		I("server").disabled=true;
 		s.onupdate=function(data){
@@ -188,7 +188,7 @@ function startStop(){
 		s.onend=function(aborted){
             I("startStopBtn").className="bg-primary-container text-on-primary-container font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer";
             I("startStopBtn").querySelector(".btnLabel").textContent="START TEST";
-            I("startStopBtn").querySelector(".btnLabelMm").textContent="စတင်ရန်";
+            I("startStopBtn").querySelector(".btnLabelMm").textContent=" အမြန်နှုန်းတိုင်းမယ် ";
             I("server").disabled=false;
             updateUI(true);
             if(!aborted){
@@ -197,7 +197,7 @@ function startStop(){
                     if(testId!=null){
                         var shareURL=window.location.href.substring(0,window.location.href.lastIndexOf("/"))+"/results/?id="+testId;
                         I("resultsImg").src=shareURL;
-                        I("resultsImg").alt="ဒေါင်းလုဒ်: "+uiData.dlStatus+" Mbps, အပ်လုဒ်: "+uiData.ulStatus+" Mbps, ပင်: "+uiData.pingStatus+" ms, ဂျစ်တာ: "+uiData.jitterStatus+" ms";
+                        I("resultsImg").alt="ဒေါင်းလုဒ်: "+uiData.dlStatus+" Mbps, အပ်လုဒ်: "+uiData.ulStatus+" Mbps, နှောင့်နှေးမှု "+uiData.pingStatus+" ms, အနှောင့်အယှက်: "+uiData.jitterStatus+" ms";
                         I("resultsURL").value=shareURL;
                         I("testId").innerHTML=testId;
                         I("shareArea").style.display="";
@@ -236,15 +236,15 @@ function updateUI(forced){
 	if(mainSpeed){
 		if(status==1){
 			mainSpeed.textContent=(uiData.dlStatus==0)?"...":format(uiData.dlStatus);
-			I("mainSpeedLabel").textContent="ဒေါင်းလုဒ် (Download)";
+			I("mainSpeedLabel").textContent="ဒေါင်းလုဒ်";
 			I("mainSpeedUnit").textContent="Mbps";
 		}else if(status==3){
 			mainSpeed.textContent=(uiData.ulStatus==0)?"...":format(uiData.ulStatus);
-			I("mainSpeedLabel").textContent="အပ်လုဒ် (Upload)";
+			I("mainSpeedLabel").textContent="အပ်လုဒ်";
 			I("mainSpeedUnit").textContent="Mbps";
 		}else if(status==2){
 			mainSpeed.textContent=format(uiData.pingStatus);
-			I("mainSpeedLabel").textContent="ပင် (Ping)";
+			I("mainSpeedLabel").textContent="နှောင့်နှေးမှု";
 			I("mainSpeedUnit").textContent="ms";
 		}
 	}
@@ -301,7 +301,7 @@ function initUI(){
 <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl flex items-center justify-between px-6 h-16">
     <div class="flex items-center gap-2">
         <span class="material-symbols-outlined text-amber-500" data-icon="signal_cellular_alt">signal_cellular_alt</span>
-        <h1 class="font-sans text-lg font-bold tracking-tight text-zinc-900">The Community Net</h1>
+        <h1 class="font-sans text-lg font-bold tracking-tight text-zinc-900">ComNet Internet Speed Test</h1>
     </div>
     <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
         <span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
@@ -363,7 +363,7 @@ function initUI(){
 
     <section class="grid grid-cols-2 gap-4 mb-6">
         <div class="bg-surface-container-low p-4 rounded-2xl flex flex-col items-center justify-center space-y-1">
-            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">ဒေါင်းလုဒ် (Download)</span>
+            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">ဒေါင်းလုဒ်</span>
             <div class="relative w-full flex items-center justify-center" style="height:100px;">
                 <canvas id="dlMeter" class="absolute inset-0 w-full h-full"></canvas>
                 <span id="dlText" class="text-xl font-bold relative z-10"></span>
@@ -371,7 +371,7 @@ function initUI(){
             <span class="text-[10px] text-on-surface-variant">Mbps</span>
         </div>
         <div class="bg-surface-container-low p-4 rounded-2xl flex flex-col items-center justify-center space-y-1">
-            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">အပ်လုဒ် (Upload)</span>
+            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">အပ်လုဒ်</span>
             <div class="relative w-full flex items-center justify-center" style="height:100px;">
                 <canvas id="ulMeter" class="absolute inset-0 w-full h-full"></canvas>
                 <span id="ulText" class="text-xl font-bold relative z-10"></span>
@@ -382,19 +382,19 @@ function initUI(){
 
     <section class="grid grid-cols-2 gap-4 mb-10">
         <div class="bg-surface-container-low p-4 rounded-2xl flex flex-col items-center justify-center space-y-1">
-            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">ပင် (Ping)</span>
+            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">နှောင့်နှေးမှု</span>
             <span id="pingText" class="text-xl font-bold"></span>
-            <span class="text-[10px] text-on-surface-variant">မီလီစက္ကန့် (ms)</span>
+            <span class="text-[10px] text-on-surface-variant">မီလီစက္ကန့်</span>
         </div>
         <div class="bg-surface-container-low p-4 rounded-2xl flex flex-col items-center justify-center space-y-1">
-            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">ဂျစ်တာ (Jitter)</span>
+            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">အနှောင့်အယှက်</span>
             <span id="jitText" class="text-xl font-bold"></span>
-            <span class="text-[10px] text-on-surface-variant">မီလီစက္ကန့် (ms)</span>
+            <span class="text-[10px] text-on-surface-variant">မီလီစက္ကန့်</span>
         </div>
     </section>
 
     <div class="text-center mb-6">
-        <span class="text-xs text-on-surface-variant">IP လိပ်စာ: </span>
+        <span class="text-xs text-on-surface-variant">သင်၏ အိုင်ပီလိပ်စာ: </span>
         <span id="ip" class="text-xs font-semibold text-on-surface-variant"></span>
     </div>
 
@@ -422,7 +422,7 @@ function initUI(){
         <ul class="text-sm text-on-surface-variant list-disc pl-5 space-y-1">
             <li>စမ်းသပ်မှု ID</li>
             <li>စမ်းသပ်သည့်အချိန်</li>
-            <li>စမ်းသပ်မှုရလဒ်များ (ဒေါင်းလုဒ်၊ အပ်လုဒ်၊ ပင်နှင့် ဂျစ်တာ)</li>
+            <li>စမ်းသပ်မှုရလဒ်များ (ဒေါင်းလုဒ်၊ အပ်လုဒ်၊ နှောင့်နှေးမှုနှင့် အနှောင့်အယှက်)</li>
             <li>IP လိပ်စာ</li>
             <li>ISP အချက်အလက်</li>
             <li>ခန့်မှန်းခြေ တည်နေရာ (IP လိပ်စာမှတစ်ဆင့် သိရှိခြင်းဖြစ်ပြီး GPS မဟုတ်ပါ)</li>
@@ -447,14 +447,6 @@ function initUI(){
     <a class="flex flex-col items-center justify-center bg-amber-100 text-amber-600 rounded-2xl px-5 py-2 scale-95 active:scale-90 transition-transform" href="#">
         <span class="material-symbols-outlined" data-icon="speed" style="font-variation-settings: 'FILL' 1;">speed</span>
         <span class="font-sans text-[10px] font-semibold uppercase tracking-wider mt-1">အမြန်နှုန်း</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-zinc-400 px-5 py-2 hover:text-amber-500 transition-all scale-95 active:scale-90 transition-transform" href="#">
-        <span class="material-symbols-outlined" data-icon="history">history</span>
-        <span class="font-sans text-[10px] font-semibold uppercase tracking-wider mt-1">မှတ်တမ်း</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-zinc-400 px-5 py-2 hover:text-amber-500 transition-all scale-95 active:scale-90 transition-transform" href="#">
-        <span class="material-symbols-outlined" data-icon="hub">hub</span>
-        <span class="font-sans text-[10px] font-semibold uppercase tracking-wider mt-1">နုတ်စ်များ</span>
     </a>
 </nav>
 
