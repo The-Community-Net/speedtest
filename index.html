@@ -1,55 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="my">
 <head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="shortcut icon" href="favicon.ico">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
-<meta charset="UTF-8" />
+<title>The Community Net - အမြန်နှုန်းစစ်ဆေးခြင်း</title>
 <script type="text/javascript" src="speedtest.js"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+Myanmar:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "surface-tint": "#7e5700",
+                    "error": "#ba1a1a",
+                    "background": "#fdf8fd",
+                    "primary-fixed-dim": "#ffba38",
+                    "on-surface": "#1c1b1f",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#281900",
+                    "primary": "#7e5700",
+                    "surface-dim": "#ddd9de",
+                    "on-background": "#1c1b1f",
+                    "inverse-on-surface": "#f4eff5",
+                    "surface-container-low": "#f7f2f8",
+                    "surface-container-high": "#ebe7ec",
+                    "outline": "#847560",
+                    "on-surface-variant": "#514532",
+                    "on-secondary-container": "#666367",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#00d2fe",
+                    "tertiary-fixed": "#b5ebff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#f1ecf2",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#d6c4ac",
+                    "secondary-fixed-dim": "#cac5c9",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#e6e1e5",
+                    "on-secondary-fixed-variant": "#484649",
+                    "tertiary-fixed-dim": "#43d6ff",
+                    "on-tertiary-fixed-variant": "#004e60",
+                    "tertiary": "#00677e",
+                    "on-primary-fixed-variant": "#604100",
+                    "surface-container-highest": "#e5e1e7",
+                    "primary-fixed": "#ffdeac",
+                    "inverse-primary": "#ffba38",
+                    "secondary-container": "#e6e1e5",
+                    "secondary": "#605d61",
+                    "on-tertiary-fixed": "#001f28",
+                    "primary-container": "#ffb300",
+                    "surface": "#fdf8fd",
+                    "on-primary-container": "#6b4900",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#313034",
+                    "surface-bright": "#fdf8fd",
+                    "on-secondary-fixed": "#1c1b1e",
+                    "on-tertiary-container": "#00566a",
+                    "surface-variant": "#e5e1e7"
+                },
+                fontFamily: {
+                    "headline": ["Inter", "Noto Sans Myanmar"],
+                    "body": ["Inter", "Noto Sans Myanmar"],
+                    "label": ["Inter", "Noto Sans Myanmar"]
+                },
+                borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+        },
+    }
+</script>
 <script type="text/javascript">
 function I(i){return document.getElementById(i);}
 
-//LIST OF TEST SERVERS. Leave empty if you're doing a standalone installation. See documentation for details
-var SPEEDTEST_SERVERS=[
-	/*{	//this server doesn't actually exist, remove it
-		name:"Example Server 1", //user friendly name for the server
-		server:"//test1.mydomain.com/", //URL to the server. // at the beginning will be replaced with http:// or https:// automatically
-		dlURL:"backend/garbage.php",  //path to download test on this server (garbage.php or replacement)
-		ulURL:"backend/empty.php",  //path to upload test on this server (empty.php or replacement)
-		pingURL:"backend/empty.php",  //path to ping/jitter test on this server (empty.php or replacement)
-		getIpURL:"backend/getIP.php"  //path to getIP on this server (getIP.php or replacement)
-	},
-	{	//this server doesn't actually exist, remove it
-		name:"Example Server 2", //user friendly name for the server
-		server:"//test2.example.com/", //URL to the server. // at the beginning will be replaced with http:// or https:// automatically
-		dlURL:"garbage.php",  //path to download test on this server (garbage.php or replacement)
-		ulURL:"empty.php",  //path to upload test on this server (empty.php or replacement)
-		pingURL:"empty.php",  //path to ping/jitter test on this server (empty.php or replacement)
-		getIpURL:"getIP.php"  //path to getIP on this server (getIP.php or replacement)
-	}*/
-	//add other servers here, comma separated
-];
+var SPEEDTEST_SERVERS=[];
 
 //INITIALIZE SPEEDTEST
-var s=new Speedtest(); //create speed test object
-s.setParameter("telemetry_level","basic"); //enable basic telemetry (for results sharing)
+var s=new Speedtest();
+s.setParameter("telemetry_level","basic");
 
-//SERVER AUTO SELECTION
 function initServers(){
-	if(SPEEDTEST_SERVERS.length==0){ //standalone installation
-		//just make the UI visible
+	if(SPEEDTEST_SERVERS.length==0){
 		I("loading").className="hidden";
 		I("serverArea").style.display="none";
 		I("testWrapper").className="visible";
 		initUI();
-	}else{ //multiple servers
+	}else{
 		var noServersAvailable=function(){
-			I("message").innerHTML="No servers available";
+			I("message").innerHTML="ဆာဗာများ မရနိုင်ပါ";
 		}
 		var runServerSelect=function(){
 			s.selectServer(function(server){
-				if(server!=null){ //at least 1 server is available
-					I("loading").className="hidden"; //hide loading message
-					//populate server list for manual selection
+				if(server!=null){
+					I("loading").className="hidden";
 					for(var i=0;i<SPEEDTEST_SERVERS.length;i++){
 						if(SPEEDTEST_SERVERS[i].pingT==-1) continue;
 						var option=document.createElement("option");
@@ -58,26 +103,23 @@ function initServers(){
 						if(SPEEDTEST_SERVERS[i]===server) option.selected=true;
 						I("server").appendChild(option);
 					}
-					//show test UI
 					I("testWrapper").className="visible";
 					initUI();
-				}else{ //no servers are available, the test cannot proceed
+				}else{
 					noServersAvailable();
 				}
 			});
 		}
 		if(typeof SPEEDTEST_SERVERS === "string"){
-			//need to fetch list of servers from specified URL
 			s.loadServerList(SPEEDTEST_SERVERS,function(servers){
-				if(servers==null){ //failed to load server list
+				if(servers==null){
 					noServersAvailable();
-				}else{ //server list loaded
+				}else{
 					SPEEDTEST_SERVERS=servers;
 					runServerSelect();
 				}
 			});
 		}else{
-			//hardcoded server list
 			s.addTestPoints(SPEEDTEST_SERVERS);
 			runServerSelect();
 		}
@@ -85,11 +127,10 @@ function initServers(){
 }
 
 var meterBk=/Trident.*rv:(\d+\.\d+)/i.test(navigator.userAgent)?"#EAEAEA":"#80808040";
-var dlColor="#6060AA",
-	ulColor="#616161";
+var dlColor="#FFB300",
+	ulColor="#00677e";
 var progColor=meterBk;
 
-//CODE FOR GAUGES
 function drawMeter(c,amount,bk,fg,progress,prog){
 	var ctx=c.getContext("2d");
 	var dp=window.devicePixelRatio||1;
@@ -130,32 +171,33 @@ function format(d){
 var uiData=null;
 function startStop(){
     if(s.getState()==3){
-		//speed test is running, abort
 		s.abort();
 		data=null;
-		I("startStopBtn").className="";
+		I("startStopBtn").className="bg-primary-container text-on-primary-container font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer";
 		I("server").disabled=false;
 		initUI();
 	}else{
-		//test is not running, begin
-		I("startStopBtn").className="running";
+		I("startStopBtn").className="bg-red-500 text-white font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer";
+		I("startStopBtn").querySelector(".btnLabel").textContent="ABORT";
+		I("startStopBtn").querySelector(".btnLabelMm").textContent="ရပ်ရန်";
 		I("shareArea").style.display="none";
 		I("server").disabled=true;
 		s.onupdate=function(data){
             uiData=data;
 		};
 		s.onend=function(aborted){
-            I("startStopBtn").className="";
+            I("startStopBtn").className="bg-primary-container text-on-primary-container font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer";
+            I("startStopBtn").querySelector(".btnLabel").textContent="START TEST";
+            I("startStopBtn").querySelector(".btnLabelMm").textContent="စတင်ရန်";
             I("server").disabled=false;
             updateUI(true);
             if(!aborted){
-                //if testId is present, show sharing panel, otherwise do nothing
                 try{
                     var testId=uiData.testId;
                     if(testId!=null){
                         var shareURL=window.location.href.substring(0,window.location.href.lastIndexOf("/"))+"/results/?id="+testId;
                         I("resultsImg").src=shareURL;
-                        I("resultsImg").alt="Download: "+uiData.dlStatus+" Mbps, Upload: "+uiData.ulStatus+" Mbps, Ping: "+uiData.pingStatus+" ms, Jitter: "+uiData.jitterStatus+" ms";
+                        I("resultsImg").alt="ဒေါင်းလုဒ်: "+uiData.dlStatus+" Mbps, အပ်လုဒ်: "+uiData.ulStatus+" Mbps, ပင်: "+uiData.pingStatus+" ms, ဂျစ်တာ: "+uiData.jitterStatus+" ms";
                         I("resultsURL").value=shareURL;
                         I("testId").innerHTML=testId;
                         I("shareArea").style.display="";
@@ -166,7 +208,18 @@ function startStop(){
 		s.start();
 	}
 }
-//this function reads the data sent back by the test and updates the UI
+
+function updateSvgGauge(circleId, amount){
+	var circle=I(circleId);
+	if(!circle) return;
+	var r=parseFloat(circle.getAttribute("r"));
+	var circumference=2*Math.PI*r;
+	var arcLength=circumference*0.75;
+	var offset=arcLength-(arcLength*amount);
+	circle.setAttribute("stroke-dasharray", arcLength);
+	circle.setAttribute("stroke-dashoffset", offset);
+}
+
 function updateUI(forced){
 	if(!forced&&s.getState()!=3) return;
 	if(uiData==null) return;
@@ -178,18 +231,38 @@ function updateUI(forced){
 	drawMeter(I("ulMeter"),mbpsToAmount(Number(uiData.ulStatus*(status==3?oscillate():1))),meterBk,ulColor,Number(uiData.ulProgress),progColor);
 	I("pingText").textContent=format(uiData.pingStatus);
 	I("jitText").textContent=format(uiData.jitterStatus);
+
+	var mainSpeed=I("mainSpeed");
+	if(mainSpeed){
+		if(status==1){
+			mainSpeed.textContent=(uiData.dlStatus==0)?"...":format(uiData.dlStatus);
+			I("mainSpeedLabel").textContent="ဒေါင်းလုဒ် (Download)";
+			I("mainSpeedUnit").textContent="Mbps";
+		}else if(status==3){
+			mainSpeed.textContent=(uiData.ulStatus==0)?"...":format(uiData.ulStatus);
+			I("mainSpeedLabel").textContent="အပ်လုဒ် (Upload)";
+			I("mainSpeedUnit").textContent="Mbps";
+		}else if(status==2){
+			mainSpeed.textContent=format(uiData.pingStatus);
+			I("mainSpeedLabel").textContent="ပင် (Ping)";
+			I("mainSpeedUnit").textContent="ms";
+		}
+	}
+	if(status==1){
+		updateSvgGauge("gaugeProgress",mbpsToAmount(Number(uiData.dlStatus*(oscillate()))));
+	}else if(status==3){
+		updateSvgGauge("gaugeProgress",mbpsToAmount(Number(uiData.ulStatus*(oscillate()))));
+	}
 }
 function oscillate(){
 	return 1+0.02*Math.sin(Date.now()/100);
 }
-//update the UI every frame
 window.requestAnimationFrame=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||(function(callback,element){setTimeout(callback,1000/60);});
 function frame(){
 	requestAnimationFrame(frame);
 	updateUI();
 }
-frame(); //start frame loop
-//function to (re)initialize UI
+frame();
 function initUI(){
 	drawMeter(I("dlMeter"),0,meterBk,dlColor,0);
 	drawMeter(I("ulMeter"),0,meterBk,ulColor,0);
@@ -198,321 +271,192 @@ function initUI(){
 	I("pingText").textContent="";
 	I("jitText").textContent="";
 	I("ip").textContent="";
+	var mainSpeed=I("mainSpeed");
+	if(mainSpeed){
+		mainSpeed.textContent="0.00";
+		I("mainSpeedLabel").textContent="အဆင်သင့်";
+		I("mainSpeedUnit").textContent="Mbps";
+	}
+	updateSvgGauge("gaugeProgress",0);
 }
 </script>
-<style type="text/css">
-	html,body{
-		border:none; padding:0; margin:0;
-		background:#FFFFFF;
-		color:#202020;
-	}
-	body{
-		text-align:center;
-		font-family:"Roboto",sans-serif;
-	}
-	h1{
-		color:#404040;
-	}
-	#loading{
-		background-color:#FFFFFF;
-		color:#404040;
-		text-align:center;
-	}
-	span.loadCircle{
-		display:inline-block;
-		width:2em;
-		height:2em;
-		vertical-align:middle;
-		background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAP1BMVEUAAAB2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZyFzwnAAAAFHRSTlMAEvRFvX406baecwbf0casimhSHyiwmqgAAADpSURBVHja7dbJbQMxAENRahnN5lkc//5rDRAkDeRgHszXgACJoKiIiIiIiIiIiIiIiIiIiIj4HHspsrpAVhdVVguzrA4OWc10WcEqpwKbnBo0OU1Q5NSpsoJFTgOecrrdEag85DRgktNqfoEdTjnd7hrEHMEJvmRUYJbTYk5Agy6nau6Abp5Cm7mDBtRdPi9gyKdU7w4p1fsLvyqs8hl4z9/w3n/Hmr9WoQ65lAU4d7lMYOz//QboRR5jBZibLMZdAR6O/Vfa1PlxNr3XdS3HzK/HVPRu/KnLs8iAOh993VpRRERERMT/fAN60wwWaVyWwAAAAABJRU5ErkJggg==');
-		background-size:2em 2em;
-		margin-right:0.5em;
-		animation: spin 0.6s linear infinite;
-	}
-	@keyframes spin{
-		0%{transform:rotate(0deg);}
-		100%{transform:rotate(359deg);}
-	}
-	#startStopBtn{
-		display:inline-block;
-		margin:0 auto;
-		color:#6060AA;
-		background-color:rgba(0,0,0,0);
-		border:0.15em solid #6060FF;
-		border-radius:0.3em;
-		transition:all 0.3s;
-		box-sizing:border-box;
-		width:8em; height:3em;
-		line-height:2.7em;
-		cursor:pointer;
-		box-shadow: 0 0 0 rgba(0,0,0,0.1), inset 0 0 0 rgba(0,0,0,0.1);
-	}
-	#startStopBtn:hover{
-		box-shadow: 0 0 2em rgba(0,0,0,0.1), inset 0 0 1em rgba(0,0,0,0.1);
-	}
-	#startStopBtn.running{
-		background-color:#FF3030;
-		border-color:#FF6060;
-		color:#FFFFFF;
-	}
-	#startStopBtn:before{
-		content:"Start";
-	}
-	#startStopBtn.running:before{
-		content:"Abort";
-	}
-	#serverArea{
-		margin-top:1em;
-	}
-	#server{
-		font-size:1em;
-		padding:0.2em;
-	}
-	#test{
-		margin-top:2em;
-		margin-bottom:12em;
-	}
-	div.testArea{
-		display:inline-block;
-		width:16em;
-		height:12.5em;
-		position:relative;
-		box-sizing:border-box;
-	}
-	div.testArea2{
-		display:inline-block;
-		width:14em;
-		height:7em;
-		position:relative;
-		box-sizing:border-box;
-		text-align:center;
-	}
-	div.testArea div.testName{
-		position:absolute;
-		top:0.1em; left:0;
-		width:100%;
-		font-size:1.4em;
-		z-index:9;
-	}
-	div.testArea2 div.testName{
-        display:block;
-        text-align:center;
-        font-size:1.4em;
-	}
-	div.testArea div.meterText{
-		position:absolute;
-		bottom:1.55em; left:0;
-		width:100%;
-		font-size:2.5em;
-		z-index:9;
-	}
-	div.testArea2 div.meterText{
-        display:inline-block;
-        font-size:2.5em;
-	}
-	div.meterText:empty:before{
-		content:"0.00";
-	}
-	div.testArea div.unit{
-		position:absolute;
-		bottom:2em; left:0;
-		width:100%;
-		z-index:9;
-	}
-	div.testArea2 div.unit{
-		display:inline-block;
-	}
-	div.testArea canvas{
-		position:absolute;
-		top:0; left:0; width:100%; height:100%;
-		z-index:1;
-	}
-	div.testGroup{
-		display:block;
-        margin: 0 auto;
-	}
-	#shareArea{
-		width:95%;
-		max-width:40em;
-		margin:0 auto;
-		margin-top:2em;
-	}
-	#shareArea > *{
-		display:block;
-		width:100%;
-		height:auto;
-		margin: 0.25em 0;
-	}
-	#privacyPolicy{
-        position:fixed;
-        top:2em;
-        bottom:2em;
-        left:2em;
-        right:2em;
-        overflow-y:auto;
-        width:auto;
-        height:auto;
-        box-shadow:0 0 3em 1em #000000;
-        z-index:999999;
-        text-align:left;
-        background-color:#FFFFFF;
-        padding:1em;
-	}
-	a.privacy{
-        text-align:center;
-        font-size:0.8em;
-        color:#808080;
-        padding: 0 3em;
-	}
-    div.closePrivacyPolicy {
-        width: 100%;
-        text-align: center;
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
-    div.closePrivacyPolicy a.privacy {
-        padding: 1em 3em;
+    body {
+        font-family: 'Inter', 'Noto Sans Myanmar', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        min-height: max(884px, 100dvh);
     }
-	@media all and (max-width:40em){
-		body{
-			font-size:0.8em;
-		}
-	}
-	div.visible{
-		animation: fadeIn 0.4s;
-		display:block;
-	}
-	div.hidden{
-		animation: fadeOut 0.4s;
-		display:none;
-	}
-	@keyframes fadeIn{
-		0%{
-			opacity:0;
-		}
-		100%{
-			opacity:1;
-		}
-	}
-	@keyframes fadeOut{
-		0%{
-			display:block;
-			opacity:1;
-		}
-		100%{
-			display:block;
-			opacity:0;
-		}
-	}
-	@media all and (prefers-color-scheme: dark){
-		html,body,#loading{
-			background:#202020;
-			color:#F4F4F4;
-			color-scheme:dark;
-		}
-		h1{
-			color:#E0E0E0;
-		}
-		a{
-			color:#9090FF;
-		}
-		#privacyPolicy{
-			background:#000000;
-		}
-		#resultsImg{
-			filter: invert(1);
-		}
-	}
+    div.visible { display: block; animation: fadeIn 0.4s; }
+    div.hidden  { display: none;  animation: fadeOut 0.4s; }
+    @keyframes fadeIn  { 0%{opacity:0;} 100%{opacity:1;} }
+    @keyframes fadeOut { 0%{display:block;opacity:1;} 100%{display:block;opacity:0;} }
+    .meter-canvas-hidden { position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; overflow:hidden; }
 </style>
-<title>LibreSpeed</title>
 </head>
-<body onload="initServers()">
-<h1>LibreSpeed</h1>
-<div id="loading" class="visible">
-	<p id="message"><span class="loadCircle"></span>Selecting a server...</p>
-</div>
-<div id="testWrapper" class="hidden">
-	<div id="startStopBtn" onclick="startStop()"></div><br/>
-	<a class="privacy" href="#" onclick="I('privacyPolicy').style.display=''">Privacy</a>
-	<div id="serverArea">
-		Server: <select id="server" onchange="s.setSelectedServer(SPEEDTEST_SERVERS[this.value])"></select>
-	</div>
-	<div id="test">
-		<div class="testGroup">
-            <div class="testArea2">
-				<div class="testName">Ping</div>
-				<div id="pingText" class="meterText" style="color:#AA6060"></div>
-				<div class="unit">ms</div>
-			</div>
-			<div class="testArea2">
-				<div class="testName">Jitter</div>
-				<div id="jitText" class="meterText" style="color:#AA6060"></div>
-				<div class="unit">ms</div>
-			</div>
-		</div>
-		<div class="testGroup">
-			<div class="testArea">
-				<div class="testName">Download</div>
-				<canvas id="dlMeter" class="meter"></canvas>
-				<div id="dlText" class="meterText"></div>
-				<div class="unit">Mbit/s</div>
-			</div>
-			<div class="testArea">
-				<div class="testName">Upload</div>
-				<canvas id="ulMeter" class="meter"></canvas>
-				<div id="ulText" class="meterText"></div>
-				<div class="unit">Mbit/s</div>
-			</div>
-		</div>
-		<div id="ipArea">
-			<span id="ip"></span>
-		</div>
-		<div id="shareArea" style="display:none">
-			<h3>Share results</h3>
-			<p>Test ID: <span id="testId"></span></p>
-			<input type="text" value="" id="resultsURL" readonly="readonly" onclick="this.select();this.focus();this.select();document.execCommand('copy');alert('Link copied')"/>
-			<img src="" id="resultsImg" />
-		</div>
-	</div>
-	<a href="https://github.com/librespeed/speedtest">Source code</a>
-</div>
-<div id="privacyPolicy" style="display:none">
-    <h2>Privacy Policy</h2>
-    <p>This HTML5 speed test server is configured with telemetry enabled.</p>
-    <h4>What data we collect</h4>
-    <p>
-        At the end of the test, the following data is collected and stored:
-        <ul>
-            <li>Test ID</li>
-            <li>Time of testing</li>
-            <li>Test results (download and upload speed, ping and jitter)</li>
-            <li>IP address</li>
-            <li>ISP information</li>
-            <li>Approximate location (inferred from IP address, not GPS)</li>
-            <li>User agent and browser locale</li>
-            <li>Test log (contains no personal information)</li>
-        </ul>
-    </p>
-    <h4>How we use the data</h4>
-    <p>
-        Data collected through this service is used to:
-        <ul>
-            <li>Allow sharing of test results (sharable image for forums, etc.)</li>
-            <li>To improve the service offered to you (for instance, to detect problems on our side)</li>
-        </ul>
-        No personal information is disclosed to third parties.
-    </p>
-    <h4>Your consent</h4>
-    <p>
-        By starting the test, you consent to the terms of this privacy policy.
-    </p>
-    <h4>Data removal</h4>
-    <p>
-        If you want to have your information deleted, you need to provide either the ID of the test or your IP address. This is the only way to identify your data, without this information we won't be able to comply with your request.<br/><br/>
-        Contact this email address for all deletion requests: <a href="mailto:PUT@YOUR_EMAIL.HERE">TO BE FILLED BY DEVELOPER</a>.
-    </p>
-    <br/><br/>
-    <div class="closePrivacyPolicy">
-        <a class="privacy" href="#" onclick="I('privacyPolicy').style.display='none'">Close</a>
+<body class="bg-background text-on-surface min-h-screen flex flex-col" onload="initServers()">
+
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl flex items-center justify-between px-6 h-16">
+    <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-amber-500" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+        <h1 class="font-sans text-lg font-bold tracking-tight text-zinc-900">The Community Net</h1>
     </div>
-    <br/>
+    <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+        <span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
+    </div>
+</header>
+
+<div id="loading" class="visible fixed inset-0 z-[100] bg-background flex items-center justify-center">
+    <p id="message" class="text-on-surface-variant text-sm font-semibold flex items-center gap-3">
+        <svg class="animate-spin h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
+        ဆာဗာရွေးချယ်နေသည်...
+    </p>
 </div>
+
+<div id="testWrapper" class="hidden">
+<main class="flex-1 mt-16 mb-24 px-6 pt-8 max-w-md mx-auto w-full">
+
+    <section class="flex flex-col items-center justify-center py-10 space-y-8">
+        <div class="relative flex items-center justify-center">
+            <svg class="w-64 h-64" viewBox="0 0 256 256" style="transform: rotate(-135deg);">
+                <circle cx="128" cy="128" fill="none" r="110" stroke="#F0F0F0" stroke-width="12"
+                    stroke-dasharray="518.36" stroke-dashoffset="172.79" stroke-linecap="round"></circle>
+                <circle id="gaugeProgress" cx="128" cy="128" fill="none" r="110" stroke="#FFB300" stroke-width="12"
+                    stroke-dasharray="518.36" stroke-dashoffset="518.36" stroke-linecap="round"></circle>
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                <span id="mainSpeed" class="text-5xl font-extrabold tracking-tighter text-on-surface">0.00</span>
+                <span id="mainSpeedUnit" class="text-sm font-semibold text-on-surface-variant tracking-widest uppercase">Mbps</span>
+                <div class="mt-2 text-xs font-medium text-on-surface-variant">
+                    <span id="mainSpeedLabel">အဆင်သင့်</span>
+                </div>
+            </div>
+        </div>
+
+        <button id="startStopBtn" onclick="startStop()"
+            class="bg-primary-container text-on-primary-container font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer">
+            <span class="text-lg btnLabel">စတင်ရန်</span>
+            <span class="text-sm opacity-90 btnLabelMm">START TEST</span>
+        </button>
+    </section>
+
+    <div id="serverArea" class="mb-6">
+        <div class="bg-surface-container-low p-5 rounded-2xl flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-surface-container-high rounded-full flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary" data-icon="dns">dns</span>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold">ဆာဗာ (Server)</h3>
+                    <select id="server" onchange="s.setSelectedServer(SPEEDTEST_SERVERS[this.value])"
+                        class="text-xs text-on-surface-variant bg-transparent border-none p-0 focus:ring-0 cursor-pointer"></select>
+                </div>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+        </div>
+    </div>
+
+    <section class="grid grid-cols-2 gap-4 mb-6">
+        <div class="bg-surface-container-low p-4 rounded-2xl flex flex-col items-center justify-center space-y-1">
+            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">ဒေါင်းလုဒ် (Download)</span>
+            <div class="relative w-full flex items-center justify-center" style="height:100px;">
+                <canvas id="dlMeter" class="absolute inset-0 w-full h-full"></canvas>
+                <span id="dlText" class="text-xl font-bold relative z-10"></span>
+            </div>
+            <span class="text-[10px] text-on-surface-variant">Mbps</span>
+        </div>
+        <div class="bg-surface-container-low p-4 rounded-2xl flex flex-col items-center justify-center space-y-1">
+            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">အပ်လုဒ် (Upload)</span>
+            <div class="relative w-full flex items-center justify-center" style="height:100px;">
+                <canvas id="ulMeter" class="absolute inset-0 w-full h-full"></canvas>
+                <span id="ulText" class="text-xl font-bold relative z-10"></span>
+            </div>
+            <span class="text-[10px] text-on-surface-variant">Mbps</span>
+        </div>
+    </section>
+
+    <section class="grid grid-cols-2 gap-4 mb-10">
+        <div class="bg-surface-container-low p-4 rounded-2xl flex flex-col items-center justify-center space-y-1">
+            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">ပင် (Ping)</span>
+            <span id="pingText" class="text-xl font-bold"></span>
+            <span class="text-[10px] text-on-surface-variant">မီလီစက္ကန့် (ms)</span>
+        </div>
+        <div class="bg-surface-container-low p-4 rounded-2xl flex flex-col items-center justify-center space-y-1">
+            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">ဂျစ်တာ (Jitter)</span>
+            <span id="jitText" class="text-xl font-bold"></span>
+            <span class="text-[10px] text-on-surface-variant">မီလီစက္ကန့် (ms)</span>
+        </div>
+    </section>
+
+    <div class="text-center mb-6">
+        <span class="text-xs text-on-surface-variant">IP လိပ်စာ: </span>
+        <span id="ip" class="text-xs font-semibold text-on-surface-variant"></span>
+    </div>
+
+    <div id="shareArea" style="display:none" class="bg-surface-container-low p-5 rounded-2xl mb-10 space-y-3">
+        <h3 class="text-sm font-bold">ရလဒ်များကို မျှဝေရန်</h3>
+        <p class="text-xs text-on-surface-variant">စမ်းသပ်မှု ID: <span id="testId"></span></p>
+        <input type="text" value="" id="resultsURL" readonly="readonly"
+            onclick="this.select();this.focus();this.select();document.execCommand('copy');alert('လင့်ခ်ကို ကူးယူပြီးပါပြီ')"
+            class="w-full text-xs p-3 rounded-xl bg-surface-container-highest border-none focus:ring-2 focus:ring-primary"/>
+        <img src="" id="resultsImg" class="w-full rounded-xl" />
+    </div>
+
+    <div class="text-center mb-6">
+        <a class="text-xs text-on-surface-variant hover:text-primary cursor-pointer" href="#" onclick="I('privacyPolicy').style.display=''">ကိုယ်ရေးအချက်အလက်မူဝါဒ (Privacy Policy)</a>
+    </div>
+
+</main>
+</div>
+
+<div id="privacyPolicy" style="display:none" class="fixed inset-0 z-[200] bg-black/50 flex items-center justify-center p-4">
+    <div class="bg-background rounded-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto p-6 space-y-4 shadow-xl">
+        <h2 class="text-lg font-extrabold">ကိုယ်ရေးအချက်အလက်မူဝါဒ</h2>
+        <p class="text-sm text-on-surface-variant">ဤ HTML5 အမြန်နှုန်းစစ်ဆေးသည့် ဆာဗာတွင် telemetry စနစ်ကို ဖွင့်ထားပါသည်။</p>
+        <h4 class="text-sm font-bold">ကျွန်ုပ်တို့စုဆောင်းသော အချက်အလက်များ</h4>
+        <ul class="text-sm text-on-surface-variant list-disc pl-5 space-y-1">
+            <li>စမ်းသပ်မှု ID</li>
+            <li>စမ်းသပ်သည့်အချိန်</li>
+            <li>စမ်းသပ်မှုရလဒ်များ (ဒေါင်းလုဒ်၊ အပ်လုဒ်၊ ပင်နှင့် ဂျစ်တာ)</li>
+            <li>IP လိပ်စာ</li>
+            <li>ISP အချက်အလက်</li>
+            <li>ခန့်မှန်းခြေ တည်နေရာ (IP လိပ်စာမှတစ်ဆင့် သိရှိခြင်းဖြစ်ပြီး GPS မဟုတ်ပါ)</li>
+            <li>User agent နှင့် ဘရောက်ဆာ အချက်အလက်</li>
+            <li>စမ်းသပ်မှု မှတ်တမ်း (ကိုယ်ရေးကိုယ်တာ အချက်အလက်များ မပါဝင်ပါ)</li>
+        </ul>
+        <h4 class="text-sm font-bold">အချက်အလက်များကို အသုံးပြုပုံ</h4>
+        <ul class="text-sm text-on-surface-variant list-disc pl-5 space-y-1">
+            <li>စမ်းသပ်မှုရလဒ်များကို မျှဝေနိုင်ရန်</li>
+            <li>ဝန်ဆောင်မှုများကို ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ရန်</li>
+        </ul>
+        <p class="text-sm text-on-surface-variant">မည်သည့် ကိုယ်ရေးကိုယ်တာ အချက်အလက်ကိုမျှ ပြင်ပအဖွဲ့အစည်းများထံ ထုတ်ဖော်ပြောကြားခြင်း မရှိပါ။</p>
+        <h4 class="text-sm font-bold">သင်၏ သဘောတူညီချက်</h4>
+        <p class="text-sm text-on-surface-variant">စမ်းသပ်မှုကို စတင်ခြင်းဖြင့် သင်သည် ဤမူဝါဒပါ စည်းကမ်းချက်များကို သဘောတူညီပြီး ဖြစ်ပါသည်။</p>
+        <div class="text-center pt-4">
+            <button onclick="I('privacyPolicy').style.display='none'" class="bg-primary-container text-on-primary-container font-bold px-8 py-3 rounded-xl active:scale-95 transition-transform cursor-pointer">ပိတ်ရန်</button>
+        </div>
+    </div>
+</div>
+
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 backdrop-blur-xl z-50 rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+    <a class="flex flex-col items-center justify-center bg-amber-100 text-amber-600 rounded-2xl px-5 py-2 scale-95 active:scale-90 transition-transform" href="#">
+        <span class="material-symbols-outlined" data-icon="speed" style="font-variation-settings: 'FILL' 1;">speed</span>
+        <span class="font-sans text-[10px] font-semibold uppercase tracking-wider mt-1">အမြန်နှုန်း</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-zinc-400 px-5 py-2 hover:text-amber-500 transition-all scale-95 active:scale-90 transition-transform" href="#">
+        <span class="material-symbols-outlined" data-icon="history">history</span>
+        <span class="font-sans text-[10px] font-semibold uppercase tracking-wider mt-1">မှတ်တမ်း</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-zinc-400 px-5 py-2 hover:text-amber-500 transition-all scale-95 active:scale-90 transition-transform" href="#">
+        <span class="material-symbols-outlined" data-icon="hub">hub</span>
+        <span class="font-sans text-[10px] font-semibold uppercase tracking-wider mt-1">နုတ်စ်များ</span>
+    </a>
+</nav>
+
 </body>
 </html>
