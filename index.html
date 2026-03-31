@@ -188,7 +188,7 @@ function startStop(){
 		s.onend=function(aborted){
             I("startStopBtn").className="bg-primary-container text-on-primary-container font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer";
             I("startStopBtn").querySelector(".btnLabel").textContent="START TEST";
-            I("startStopBtn").querySelector(".btnLabelMm").textContent=" အမြန်နှုန်းတိုင်းမယ် ";
+            I("startStopBtn").querySelector(".btnLabelMm").textContent="အင်တာနက်အမြန်နှုန်းတိုင်းမယ်";
             I("server").disabled=false;
             updateUI(true);
             if(!aborted){
@@ -336,7 +336,7 @@ function initUI(){
 
         <button id="startStopBtn" onclick="startStop()"
             class="bg-primary-container text-on-primary-container font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer">
-            <span class="text-lg btnLabel"> အင်တာနက်အမြန်နှုန်းတိုင်းမယ် </span>
+            <span class="text-lg btnLabel"> အင်တာနက်အင်တာနက်အမြန်နှုန်းတိုင်းမယ် </span>
         </button>
     </section>
 
