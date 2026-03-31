@@ -1,305 +1,289 @@
 <!DOCTYPE html>
 <html lang="my">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link rel="shortcut icon" href="favicon.ico">
-<title>The Community Net - အမြန်နှုန်းစစ်ဆေးခြင်း</title>
-<script type="text/javascript" src="speedtest.js"></script>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+Myanmar:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-    tailwind.config = {
-        darkMode: "class",
-        theme: {
-            extend: {
-                colors: {
-                    "surface-tint": "#7e5700",
-                    "error": "#ba1a1a",
-                    "background": "#fdf8fd",
-                    "primary-fixed-dim": "#ffba38",
-                    "on-surface": "#1c1b1f",
-                    "on-secondary": "#ffffff",
-                    "on-primary-fixed": "#281900",
-                    "primary": "#7e5700",
-                    "surface-dim": "#ddd9de",
-                    "on-background": "#1c1b1f",
-                    "inverse-on-surface": "#f4eff5",
-                    "surface-container-low": "#f7f2f8",
-                    "surface-container-high": "#ebe7ec",
-                    "outline": "#847560",
-                    "on-surface-variant": "#514532",
-                    "on-secondary-container": "#666367",
-                    "error-container": "#ffdad6",
-                    "tertiary-container": "#00d2fe",
-                    "tertiary-fixed": "#b5ebff",
-                    "surface-container-lowest": "#ffffff",
-                    "on-tertiary": "#ffffff",
-                    "surface-container": "#f1ecf2",
-                    "on-primary": "#ffffff",
-                    "outline-variant": "#d6c4ac",
-                    "secondary-fixed-dim": "#cac5c9",
-                    "on-error-container": "#93000a",
-                    "secondary-fixed": "#e6e1e5",
-                    "on-secondary-fixed-variant": "#484649",
-                    "tertiary-fixed-dim": "#43d6ff",
-                    "on-tertiary-fixed-variant": "#004e60",
-                    "tertiary": "#00677e",
-                    "on-primary-fixed-variant": "#604100",
-                    "surface-container-highest": "#e5e1e7",
-                    "primary-fixed": "#ffdeac",
-                    "inverse-primary": "#ffba38",
-                    "secondary-container": "#e6e1e5",
-                    "secondary": "#605d61",
-                    "on-tertiary-fixed": "#001f28",
-                    "primary-container": "#ffb300",
-                    "surface": "#fdf8fd",
-                    "on-primary-container": "#6b4900",
-                    "on-error": "#ffffff",
-                    "inverse-surface": "#313034",
-                    "surface-bright": "#fdf8fd",
-                    "on-secondary-fixed": "#1c1b1e",
-                    "on-tertiary-container": "#00566a",
-                    "surface-variant": "#e5e1e7"
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>The Community Net - အမြန်နှုန်းစစ်ဆေးခြင်း</title>
+    <script type="text/javascript" src="speedtest.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+Myanmar:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-tint": "#7e5700",
+                        "error": "#ba1a1a",
+                        "background": "#fdf8fd",
+                        "primary-fixed-dim": "#ffba38",
+                        "on-surface": "#1c1b1f",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#281900",
+                        "primary": "#7e5700",
+                        "surface-dim": "#ddd9de",
+                        "on-background": "#1c1b1f",
+                        "inverse-on-surface": "#f4eff5",
+                        "surface-container-low": "#f7f2f8",
+                        "surface-container-high": "#ebe7ec",
+                        "outline": "#847560",
+                        "on-surface-variant": "#514532",
+                        "on-secondary-container": "#666367",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#00d2fe",
+                        "tertiary-fixed": "#b5ebff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#f1ecf2",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#d6c4ac",
+                        "secondary-fixed-dim": "#cac5c9",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e6e1e5",
+                        "on-secondary-fixed-variant": "#484649",
+                        "tertiary-fixed-dim": "#43d6ff",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "tertiary": "#00677e",
+                        "on-primary-fixed-variant": "#604100",
+                        "surface-container-highest": "#e5e1e7",
+                        "primary-fixed": "#ffdeac",
+                        "inverse-primary": "#ffba38",
+                        "secondary-container": "#e6e1e5",
+                        "secondary": "#605d61",
+                        "on-tertiary-fixed": "#001f28",
+                        "primary-container": "#ffb300",
+                        "surface": "#fdf8fd",
+                        "on-primary-container": "#6b4900",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#313034",
+                        "surface-bright": "#fdf8fd",
+                        "on-secondary-fixed": "#1c1b1e",
+                        "on-tertiary-container": "#00566a",
+                        "surface-variant": "#e5e1e7"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter", "Noto Sans Myanmar"],
+                        "body": ["Inter", "Noto Sans Myanmar"],
+                        "label": ["Inter", "Noto Sans Myanmar"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
                 },
-                fontFamily: {
-                    "headline": ["Inter", "Noto Sans Myanmar"],
-                    "body": ["Inter", "Noto Sans Myanmar"],
-                    "label": ["Inter", "Noto Sans Myanmar"]
-                },
-                borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
             },
-        },
-    }
-</script>
-<script type="text/javascript">
-function I(i){return document.getElementById(i);}
+        }
+    </script>
+    <script type="text/javascript">
+        function I(i){return document.getElementById(i);}
 
-var SPEEDTEST_SERVERS=[];
+        var SPEEDTEST_SERVERS=[];
+        var s=new Speedtest();
+        s.setParameter("telemetry_level","basic");
 
-//INITIALIZE SPEEDTEST
-var s=new Speedtest();
-s.setParameter("telemetry_level","basic");
+        // --- GAUGE TRACKING VARIABLES ---
+        var smoothAmount = 0;
+        var targetAmount = 0;
+        var uiData = null;
+        var meterBk=/Trident.*rv:(\d+\.\d+)/i.test(navigator.userAgent)?"#EAEAEA":"#80808040";
+        var dlColor="#FFB300", ulColor="#00677e", progColor=meterBk;
 
-function initServers(){
-	if(SPEEDTEST_SERVERS.length==0){
-		I("loading").className="hidden";
-		I("serverArea").style.display="none";
-		I("testWrapper").className="visible";
-		initUI();
-	}else{
-		var noServersAvailable=function(){
-			I("message").innerHTML="ဆာဗာများ မရနိုင်ပါ";
-		}
-		var runServerSelect=function(){
-			s.selectServer(function(server){
-				if(server!=null){
-					I("loading").className="hidden";
-					for(var i=0;i<SPEEDTEST_SERVERS.length;i++){
-						if(SPEEDTEST_SERVERS[i].pingT==-1) continue;
-						var option=document.createElement("option");
-						option.value=i;
-						option.textContent=SPEEDTEST_SERVERS[i].name;
-						if(SPEEDTEST_SERVERS[i]===server) option.selected=true;
-						I("server").appendChild(option);
-					}
-					I("testWrapper").className="visible";
-					initUI();
-				}else{
-					noServersAvailable();
-				}
-			});
-		}
-		if(typeof SPEEDTEST_SERVERS === "string"){
-			s.loadServerList(SPEEDTEST_SERVERS,function(servers){
-				if(servers==null){
-					noServersAvailable();
-				}else{
-					SPEEDTEST_SERVERS=servers;
-					runServerSelect();
-				}
-			});
-		}else{
-			s.addTestPoints(SPEEDTEST_SERVERS);
-			runServerSelect();
-		}
-	}
-}
-
-var meterBk=/Trident.*rv:(\d+\.\d+)/i.test(navigator.userAgent)?"#EAEAEA":"#80808040";
-var dlColor="#FFB300",
-	ulColor="#00677e";
-var progColor=meterBk;
-
-function drawMeter(c,amount,bk,fg,progress,prog){
-	var ctx=c.getContext("2d");
-	var dp=window.devicePixelRatio||1;
-	var cw=c.clientWidth*dp, ch=c.clientHeight*dp;
-	var sizScale=ch*0.0055;
-	if(c.width==cw&&c.height==ch){
-		ctx.clearRect(0,0,cw,ch);
-	}else{
-		c.width=cw;
-		c.height=ch;
-	}
-	ctx.beginPath();
-	ctx.strokeStyle=bk;
-	ctx.lineWidth=12*sizScale;
-	ctx.arc(c.width/2,c.height-58*sizScale,c.height/1.8-ctx.lineWidth,-Math.PI*1.1,Math.PI*0.1);
-	ctx.stroke();
-	ctx.beginPath();
-	ctx.strokeStyle=fg;
-	ctx.lineWidth=12*sizScale;
-	ctx.arc(c.width/2,c.height-58*sizScale,c.height/1.8-ctx.lineWidth,-Math.PI*1.1,amount*Math.PI*1.2-Math.PI*1.1);
-	ctx.stroke();
-	if(typeof progress !== "undefined"){
-		ctx.fillStyle=prog;
-		ctx.fillRect(c.width*0.3,c.height-16*sizScale,c.width*0.4*progress,4*sizScale);
-	}
-}
-function mbpsToAmount(s){
-	return 1-(1/(Math.pow(1.3,Math.sqrt(s))));
-}
-function format(d){
-    d=Number(d);
-    if(d<10) return d.toFixed(2);
-    if(d<100) return d.toFixed(1);
-    return d.toFixed(0);
-}
-
-//UI CODE
-var uiData=null;
-function startStop(){
-    if(s.getState()==3){
-    s.abort();
-    data=null;
-    I("startStopBtn").className="bg-primary-container text-on-primary-container font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer";
-    I("server").disabled=false;
-    initUI();
-  }else{
-    I("startStopBtn").className="bg-red-500 text-white font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer";
-    I("startStopBtn").querySelector(".btnLabel").textContent="ရပ်မယ်";
-    I("shareArea").style.display="none";
-    I("server").disabled=true;
-    s.onupdate=function(data){
-            uiData=data;
-    };
-    s.onend=function(aborted){
-            I("startStopBtn").className="bg-primary-container text-on-primary-container font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer";
-            I("startStopBtn").querySelector(".btnLabel").textContent="အင်တာနက်အမြန်နှုန်းတိုင်းမယ်";
-            I("server").disabled=false;
-            updateUI(true);
-            if(!aborted){
-                try{
-                    var testId=uiData.testId;
-                    if(testId!=null){
-                        var shareURL=window.location.href.substring(0,window.location.href.lastIndexOf("/"))+"/results/?id="+testId;
-                        I("resultsImg").src=shareURL;
-                        I("resultsImg").alt="ဒေါင်းလုဒ်: "+uiData.dlStatus+" Mbps, အပ်လုဒ်: "+uiData.ulStatus+" Mbps, နှောင့်နှေးမှု: "+uiData.pingStatus+" ms, အနှောင့်အယှက်: "+uiData.jitterStatus+" ms";
-                        I("resultsURL").value=shareURL;
-                        I("testId").innerHTML=testId;
-                        I("shareArea").style.display="";
-                    }
-                }catch(e){}
+        function initServers(){
+            if(SPEEDTEST_SERVERS.length==0){
+                I("loading").className="hidden";
+                I("serverArea").style.display="none";
+                I("testWrapper").className="visible";
+                initUI();
+            }else{
+                var noServersAvailable=function(){ I("message").innerHTML="ဆာဗာများ မရနိုင်ပါ"; }
+                var runServerSelect=function(){
+                    s.selectServer(function(server){
+                        if(server!=null){
+                            I("loading").className="hidden";
+                            for(var i=0;i<SPEEDTEST_SERVERS.length;i++){
+                                if(SPEEDTEST_SERVERS[i].pingT==-1) continue;
+                                var option=document.createElement("option");
+                                option.value=i;
+                                option.textContent=SPEEDTEST_SERVERS[i].name;
+                                if(SPEEDTEST_SERVERS[i]===server) option.selected=true;
+                                I("server").appendChild(option);
+                            }
+                            I("testWrapper").className="visible";
+                            initUI();
+                        }else{ noServersAvailable(); }
+                    });
+                }
+                if(typeof SPEEDTEST_SERVERS === "string"){
+                    s.loadServerList(SPEEDTEST_SERVERS,function(servers){
+                        if(servers==null){ noServersAvailable(); }else{ SPEEDTEST_SERVERS=servers; runServerSelect(); }
+                    });
+                }else{ s.addTestPoints(SPEEDTEST_SERVERS); runServerSelect(); }
             }
-    };
-    s.start();
-  }
-}
+        }
 
-function updateSvgGauge(circleId, amount){
-	var circle=I(circleId);
-	if(!circle) return;
-	var r=parseFloat(circle.getAttribute("r"));
-	var circumference=2*Math.PI*r;
-	var arcLength=circumference*0.75;
-	var offset=arcLength-(arcLength*amount);
-	circle.setAttribute("stroke-dasharray", arcLength);
-	circle.setAttribute("stroke-dashoffset", offset);
-}
+        function drawMeter(c,amount,bk,fg,progress,prog){
+            var ctx=c.getContext("2d");
+            var dp=window.devicePixelRatio||1;
+            var cw=c.clientWidth*dp, ch=c.clientHeight*dp;
+            var sizScale=ch*0.0055;
+            if(c.width==cw&&c.height==ch){ ctx.clearRect(0,0,cw,ch); }else{ c.width=cw; c.height=ch; }
+            ctx.beginPath();
+            ctx.strokeStyle=bk;
+            ctx.lineWidth=12*sizScale;
+            ctx.arc(c.width/2,c.height-58*sizScale,c.height/1.8-ctx.lineWidth,-Math.PI*1.1,Math.PI*0.1);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.strokeStyle=fg;
+            ctx.lineWidth=12*sizScale;
+            ctx.arc(c.width/2,c.height-58*sizScale,c.height/1.8-ctx.lineWidth,-Math.PI*1.1,amount*Math.PI*1.2-Math.PI*1.1);
+            ctx.stroke();
+            if(typeof progress !== "undefined"){
+                ctx.fillStyle=prog;
+                ctx.fillRect(c.width*0.3,c.height-16*sizScale,c.width*0.4*progress,4*sizScale);
+            }
+        }
 
-function updateUI(forced){
-	if(!forced&&s.getState()!=3) return;
-	if(uiData==null) return;
-	var status=uiData.testState;
-	I("ip").textContent=uiData.clientIp;
-	I("dlText").textContent=(status==1&&uiData.dlStatus==0)?"...":format(uiData.dlStatus);
-	drawMeter(I("dlMeter"),mbpsToAmount(Number(uiData.dlStatus*(status==1?oscillate():1))),meterBk,dlColor,Number(uiData.dlProgress),progColor);
-	I("ulText").textContent=(status==3&&uiData.ulStatus==0)?"...":format(uiData.ulStatus);
-	drawMeter(I("ulMeter"),mbpsToAmount(Number(uiData.ulStatus*(status==3?oscillate():1))),meterBk,ulColor,Number(uiData.ulProgress),progColor);
-	I("pingText").textContent=format(uiData.pingStatus);
-	I("jitText").textContent=format(uiData.jitterStatus);
+        // Cubic Root Scaling: 100Mbps is ~50% gauge, 1000Mbps is 100%
+        function mbpsToAmount(s){
+            if (s <= 0) return 0;
+            var amount = Math.pow(Number(s), 1/3) / 10;
+            return Math.min(Math.max(amount, 0), 1);
+        }
 
-	var mainSpeed=I("mainSpeed");
-	if(mainSpeed){
-		if(status==1){
-			mainSpeed.textContent=(uiData.dlStatus==0)?"...":format(uiData.dlStatus);
-			I("mainSpeedLabel").textContent="ဒေါင်းလုဒ် (Download)";
-			I("mainSpeedUnit").textContent="Mbps";
-		}else if(status==3){
-			mainSpeed.textContent=(uiData.ulStatus==0)?"...":format(uiData.ulStatus);
-			I("mainSpeedLabel").textContent="အပ်လုဒ် (Upload)";
-			I("mainSpeedUnit").textContent="Mbps";
-		}else if(status==2){
-			mainSpeed.textContent=format(uiData.pingStatus);
-			I("mainSpeedLabel").textContent="ပင် (Ping)";
-			I("mainSpeedUnit").textContent="ms";
-		}
-	}
-	if(status==1){
-		updateSvgGauge("gaugeProgress",mbpsToAmount(Number(uiData.dlStatus*(oscillate()))));
-	}else if(status==3){
-		updateSvgGauge("gaugeProgress",mbpsToAmount(Number(uiData.ulStatus*(oscillate()))));
-	}
-}
-function oscillate(){
-	return 1+0.02*Math.sin(Date.now()/100);
-}
-window.requestAnimationFrame=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||(function(callback,element){setTimeout(callback,1000/60);});
-function frame(){
-	requestAnimationFrame(frame);
-	updateUI();
-}
-frame();
-function initUI(){
-	drawMeter(I("dlMeter"),0,meterBk,dlColor,0);
-	drawMeter(I("ulMeter"),0,meterBk,ulColor,0);
-	I("dlText").textContent="";
-	I("ulText").textContent="";
-	I("pingText").textContent="";
-	I("jitText").textContent="";
-	I("ip").textContent="";
-	var mainSpeed=I("mainSpeed");
-	if(mainSpeed){
-		mainSpeed.textContent="0.00";
-		I("mainSpeedLabel").textContent="အဆင်သင့်";
-		I("mainSpeedUnit").textContent="Mbps";
-	}
-	updateSvgGauge("gaugeProgress",0);
-}
-</script>
-<style>
-    .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    }
-    body {
-        font-family: 'Inter', 'Noto Sans Myanmar', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        min-height: max(884px, 100dvh);
-    }
-    div.visible { display: block; animation: fadeIn 0.4s; }
-    div.hidden  { display: none;  animation: fadeOut 0.4s; }
-    @keyframes fadeIn  { 0%{opacity:0;} 100%{opacity:1;} }
-    @keyframes fadeOut { 0%{display:block;opacity:1;} 100%{display:block;opacity:0;} }
-    .meter-canvas-hidden { position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; overflow:hidden; }
-</style>
+        function format(d){
+            d=Number(d);
+            if(d<10) return d.toFixed(2);
+            if(d<100) return d.toFixed(1);
+            return d.toFixed(0);
+        }
+
+        function startStop(){
+            if(s.getState()==3){
+                s.abort();
+                uiData=null;
+                I("startStopBtn").className="bg-primary-container text-on-primary-container font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer";
+                I("server").disabled=false;
+                initUI();
+            }else{
+                I("startStopBtn").className="bg-red-500 text-white font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer";
+                I("startStopBtn").querySelector(".btnLabel").textContent="ရပ်မယ်";
+                I("shareArea").style.display="none";
+                I("server").disabled=true;
+                s.onupdate=function(data){ uiData=data; };
+                s.onend=function(aborted){
+                    I("startStopBtn").className="bg-primary-container text-on-primary-container font-bold py-4 rounded-xl shadow-none active:scale-95 transition-transform flex flex-col items-center justify-center min-h-[56px] w-full cursor-pointer";
+                    I("startStopBtn").querySelector(".btnLabel").textContent="အင်တာနက်အမြန်နှုန်းတိုင်းမယ်";
+                    I("server").disabled=false;
+                    updateUI(true);
+                    if(!aborted && uiData && uiData.testId){
+                        try{
+                            var shareURL=window.location.href.substring(0,window.location.href.lastIndexOf("/"))+"/results/?id="+uiData.testId;
+                            I("resultsImg").src=shareURL;
+                            I("resultsURL").value=shareURL;
+                            I("testId").innerHTML=uiData.testId;
+                            I("shareArea").style.display="";
+                        }catch(e){}
+                    }
+                };
+                s.start();
+            }
+        }
+
+        function updateSvgGauge(circleId, amount){
+            var circle=I(circleId);
+            if(!circle) return;
+            var r=parseFloat(circle.getAttribute("r"));
+            var circumference=2*Math.PI*r;
+            var arcLength=circumference*0.75;
+            var offset=arcLength-(arcLength*amount);
+            circle.setAttribute("stroke-dasharray", arcLength);
+            circle.setAttribute("stroke-dashoffset", offset);
+        }
+
+        function updateUI(forced){
+            if(!forced && s.getState()!=3) return;
+            if(uiData==null) return;
+            var status=uiData.testState;
+
+            I("ip").textContent=uiData.clientIp;
+            I("pingText").textContent=format(uiData.pingStatus);
+            I("jitText").textContent=format(uiData.jitterStatus);
+
+            var mainSpeed=I("mainSpeed");
+            if(mainSpeed){
+                if(status==1){
+                    mainSpeed.textContent=(uiData.dlStatus==0)?"...":format(uiData.dlStatus);
+                    I("mainSpeedLabel").textContent="ဒေါင်းလုဒ် (Download)";
+                    I("mainSpeedUnit").textContent="Mbps";
+                    I("dlText").textContent = format(uiData.dlStatus);
+                    targetAmount = mbpsToAmount(uiData.dlStatus);
+                }else if(status==3){
+                    mainSpeed.textContent=(uiData.ulStatus==0)?"...":format(uiData.ulStatus);
+                    I("mainSpeedLabel").textContent="အပ်လုဒ် (Upload)";
+                    I("mainSpeedUnit").textContent="Mbps";
+                    I("ulText").textContent = format(uiData.ulStatus);
+                    targetAmount = mbpsToAmount(uiData.ulStatus);
+                }else if(status==2){
+                    mainSpeed.textContent=format(uiData.pingStatus);
+                    I("mainSpeedLabel").textContent="ပင် (Ping)";
+                    I("mainSpeedUnit").textContent="ms";
+                    targetAmount = 0.05;
+                }
+            }
+
+            // --- LERP SMOOTHING ---
+            smoothAmount += (targetAmount - smoothAmount) * 0.08;
+            var finalVisual = smoothAmount * (status==1 || status==3 ? oscillate() : 1);
+
+            updateSvgGauge("gaugeProgress", finalVisual);
+
+            // Sync small meters
+            drawMeter(I("dlMeter"), (status==1 ? finalVisual : mbpsToAmount(uiData.dlStatus)), meterBk, dlColor, Number(uiData.dlProgress), progColor);
+            drawMeter(I("ulMeter"), (status==3 ? finalVisual : mbpsToAmount(uiData.ulStatus)), meterBk, ulColor, Number(uiData.ulProgress), progColor);
+        }
+
+        function oscillate(){
+            return 1 + 0.01 * Math.sin(Date.now()/150);
+        }
+
+        window.requestAnimationFrame=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||(function(callback){setTimeout(callback,1000/60);});
+        function frame(){
+            requestAnimationFrame(frame);
+            updateUI();
+        }
+        frame();
+
+        function initUI(){
+            smoothAmount = 0;
+            targetAmount = 0;
+            drawMeter(I("dlMeter"),0,meterBk,dlColor,0);
+            drawMeter(I("ulMeter"),0,meterBk,ulColor,0);
+            I("dlText").textContent="";
+            I("ulText").textContent="";
+            I("pingText").textContent="";
+            I("jitText").textContent="";
+            I("ip").textContent="";
+            if(I("mainSpeed")){
+                I("mainSpeed").textContent="0.00";
+                I("mainSpeedLabel").textContent="အဆင်သင့်";
+                I("mainSpeedUnit").textContent="Mbps";
+            }
+            updateSvgGauge("gaugeProgress",0);
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', 'Noto Sans Myanmar', sans-serif; -webkit-font-smoothing: antialiased; min-height: max(884px, 100dvh); }
+        div.visible { display: block; animation: fadeIn 0.4s; }
+        div.hidden  { display: none;  animation: fadeOut 0.4s; }
+        @keyframes fadeIn  { 0%{opacity:0;} 100%{opacity:1;} }
+        @keyframes fadeOut { 0%{display:block;opacity:1;} 100%{display:block;opacity:0;} }
+    </style>
 </head>
 <body class="bg-background text-on-surface min-h-screen flex flex-col" onload="initServers()">
 
-  <header class="backdrop-blur-xl bg-white/80 fixed flex h-16 items-center justify-center px-6 top-0 w-full z-50">
-      <div class="flex items-center gap-2">
-          <h1 class="font-bold font-sans text-center text-lg text-zinc-900 tracking-tight">ComNet Internet Speed Test</h1>
-      </div>
+<header class="backdrop-blur-xl bg-white/80 fixed flex h-16 items-center justify-center px-6 top-0 w-full z-50">
+    <div class="flex items-center gap-2">
+        <h1 class="font-bold font-sans text-center text-lg text-zinc-900 tracking-tight">ComNet Internet Speed Test</h1>
+    </div>
 </header>
 
 <div id="loading" class="visible fixed inset-0 z-[100] bg-background flex items-center justify-center">
@@ -314,7 +298,6 @@ function initUI(){
 
 <div id="testWrapper" class="hidden">
 <main class="flex-1 mt-16 mb-24 px-6 pt-8 max-w-md mx-auto w-full">
-
     <section class="flex flex-col items-center justify-center py-10 space-y-8">
         <div class="relative flex items-center justify-center">
             <svg class="w-64 h-64" viewBox="0 0 256 256" style="transform: rotate(-135deg);">
@@ -342,7 +325,7 @@ function initUI(){
         <div class="bg-surface-container-low p-5 rounded-2xl flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="w-10 h-10 bg-surface-container-high rounded-full flex items-center justify-center">
-                    <span class="material-symbols-outlined text-primary" data-icon="dns">dns</span>
+                    <span class="material-symbols-outlined text-primary">dns</span>
                 </div>
                 <div>
                     <h3 class="text-sm font-bold">ဆာဗာ (Server)</h3>
@@ -350,7 +333,7 @@ function initUI(){
                         class="text-xs text-on-surface-variant bg-transparent border-none p-0 focus:ring-0 cursor-pointer"></select>
                 </div>
             </div>
-            <span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+            <span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
         </div>
     </div>
 
@@ -395,7 +378,7 @@ function initUI(){
         <h3 class="text-sm font-bold">ရလဒ်များကို မျှဝေရန်</h3>
         <p class="text-xs text-on-surface-variant">စမ်းသပ်မှု ID: <span id="testId"></span></p>
         <input type="text" value="" id="resultsURL" readonly="readonly"
-            onclick="this.select();this.focus();this.select();document.execCommand('copy');alert('လင့်ခ်ကို ကူးယူပြီးပါပြီ')"
+            onclick="this.select();document.execCommand('copy');alert('လင့်ခ်ကို ကူးယူပြီးပါပြီ')"
             class="w-full text-xs p-3 rounded-xl bg-surface-container-highest border-none focus:ring-2 focus:ring-primary"/>
         <img src="" id="resultsImg" class="w-full rounded-xl" />
     </div>
@@ -403,7 +386,6 @@ function initUI(){
     <div class="text-center mb-6">
         <a class="text-xs text-on-surface-variant hover:text-primary cursor-pointer" href="#" onclick="I('privacyPolicy').style.display=''">ကိုယ်ရေးအချက်အလက်မူဝါဒ (Privacy Policy)</a>
     </div>
-
 </main>
 </div>
 
@@ -411,25 +393,6 @@ function initUI(){
     <div class="bg-background rounded-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto p-6 space-y-4 shadow-xl">
         <h2 class="text-lg font-extrabold">ကိုယ်ရေးအချက်အလက်မူဝါဒ</h2>
         <p class="text-sm text-on-surface-variant">ဤ HTML5 အမြန်နှုန်းစစ်ဆေးသည့် ဆာဗာတွင် telemetry စနစ်ကို ဖွင့်ထားပါသည်။</p>
-        <h4 class="text-sm font-bold">ကျွန်ုပ်တို့စုဆောင်းသော အချက်အလက်များ</h4>
-        <ul class="text-sm text-on-surface-variant list-disc pl-5 space-y-1">
-            <li>စမ်းသပ်မှု ID</li>
-            <li>စမ်းသပ်သည့်အချိန်</li>
-            <li>စမ်းသပ်မှုရလဒ်များ (ဒေါင်းလုဒ်၊ အပ်လုဒ်၊ နှောင့်နှေးမှုနှင့် အနှောင့်အယှက်)</li>
-            <li>IP လိပ်စာ</li>
-            <li>ISP အချက်အလက်</li>
-            <li>ခန့်မှန်းခြေ တည်နေရာ (IP လိပ်စာမှတစ်ဆင့် သိရှိခြင်းဖြစ်ပြီး GPS မဟုတ်ပါ)</li>
-            <li>User agent နှင့် ဘရောက်ဆာ အချက်အလက်</li>
-            <li>စမ်းသပ်မှု မှတ်တမ်း (ကိုယ်ရေးကိုယ်တာ အချက်အလက်များ မပါဝင်ပါ)</li>
-        </ul>
-        <h4 class="text-sm font-bold">အချက်အလက်များကို အသုံးပြုပုံ</h4>
-        <ul class="text-sm text-on-surface-variant list-disc pl-5 space-y-1">
-            <li>စမ်းသပ်မှုရလဒ်များကို မျှဝေနိုင်ရန်</li>
-            <li>ဝန်ဆောင်မှုများကို ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ရန်</li>
-        </ul>
-        <p class="text-sm text-on-surface-variant">မည်သည့် ကိုယ်ရေးကိုယ်တာ အချက်အလက်ကိုမျှ ပြင်ပအဖွဲ့အစည်းများထံ ထုတ်ဖော်ပြောကြားခြင်း မရှိပါ။</p>
-        <h4 class="text-sm font-bold">သင်၏ သဘောတူညီချက်</h4>
-        <p class="text-sm text-on-surface-variant">စမ်းသပ်မှုကို စတင်ခြင်းဖြင့် သင်သည် ဤမူဝါဒပါ စည်းကမ်းချက်များကို သဘောတူညီပြီး ဖြစ်ပါသည်။</p>
         <div class="text-center pt-4">
             <button onclick="I('privacyPolicy').style.display='none'" class="bg-primary-container text-on-primary-container font-bold px-8 py-3 rounded-xl active:scale-95 transition-transform cursor-pointer">ပိတ်ရန်</button>
         </div>
@@ -438,7 +401,7 @@ function initUI(){
 
 <nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 backdrop-blur-xl z-50 rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
     <a class="flex flex-col items-center justify-center bg-amber-100 text-amber-600 rounded-2xl px-5 py-2 scale-95 active:scale-90 transition-transform" href="#">
-        <span class="material-symbols-outlined" data-icon="speed" style="font-variation-settings: 'FILL' 1;">speed</span>
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
         <span class="font-sans text-[10px] font-semibold uppercase tracking-wider mt-1">အမြန်နှုန်း</span>
     </a>
 </nav>
