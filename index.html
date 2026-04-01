@@ -277,14 +277,14 @@
         @keyframes fadeIn  { 0%{opacity:0;} 100%{opacity:1;} }
         @keyframes fadeOut { 0%{display:block;opacity:1;} 100%{display:block;opacity:0;} }
     </style>
-</head>
-<body class="bg-background text-on-surface min-h-screen flex flex-col" onload="initServers()">
+  </head>
+  <body class="bg-background text-on-surface min-h-screen flex flex-col" onload="initServers()">
 
-<header class="backdrop-blur-xl bg-white/80 fixed flex h-16 items-center justify-center px-6 top-0 w-full z-50">
-    <div class="flex items-center gap-2">
-        <h1 class="font-bold font-sans text-center text-lg text-zinc-900 tracking-tight">ComNet Internet Speed Test</h1>
-    </div>
-</header>
+  <header class="backdrop-blur-xl bg-transparent fixed flex h-16 items-center justify-center px-6 top-0 w-full z-50">
+      <div class="flex items-center gap-2">
+          <h1 class="font-bold font-sans text-center text-lg text-zinc-900 tracking-tight">ComNet Internet Speed Test</h1>
+      </div>
+  </header>
 
 <div id="loading" class="visible fixed inset-0 z-[100] bg-background flex items-center justify-center">
     <p id="message" class="text-on-surface-variant text-sm font-semibold flex items-center gap-3">
@@ -399,7 +399,7 @@
     </div>
 </div>
 
-<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 backdrop-blur-xl z-50 rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-transparent backdrop-blur-xl z-50">
     <a class="flex flex-col items-center justify-center bg-amber-100 text-amber-600 rounded-2xl px-5 py-2 scale-95 active:scale-90 transition-transform" href="#">
         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
         <span class="font-sans text-[10px] font-semibold uppercase tracking-wider mt-1">အမြန်နှုန်း</span>
